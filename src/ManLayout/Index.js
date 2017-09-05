@@ -15,7 +15,7 @@ export default class ManLayout extends React.Component {
   }
   render() {
     return (
-      <div id='components-layout-demo-custom-trigger' >
+      <div id='components-layout-demo-custom-trigger' style={{ height:'100%' }} >
         <Layout>
           <Sider
             trigger={null}
@@ -46,7 +46,7 @@ export default class ManLayout extends React.Component {
               onClick={this.toggle}
             />
           </Header>
-          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>Content </Content>
+          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>{this.props.children}</Content>
         </Layout>
       </Layout>
     </div>
