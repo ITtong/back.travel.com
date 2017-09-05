@@ -93,19 +93,15 @@ export default class ListView extends React.Component {
 		const columns = [
 			{
 				title:'ID',
-				
 				dataIndex:'id'
 			},{
 				title:'标题',
-				
 				dataIndex:'title'
 			},{
 				title:'领队',
-				
 				dataIndex:'leader'
 			},{
 				title:'起始时间',
-				
 				dataIndex:'',
 				render (text,record) {
 					return (
@@ -114,23 +110,18 @@ export default class ListView extends React.Component {
 				}
 			},{
 				title:'成团人数',
-				
 				dataIndex:'min_num'
 			},{
 				title:'已报名人数',
-				
 				dataIndex:'really_num'
 			},{
 				title:'人数上限',
-				
 				dataIndex:'max_num'
 			},{
 				title:'状态',//  活动成型/火热报名中/已结束/
-			
 				dataIndex:'status',
 			},{
 				title:'操作',
-				
 				dataIndex:'',
 				render (text,record) {
 					return (
@@ -143,7 +134,7 @@ export default class ListView extends React.Component {
 		]
 		return (
 			<div>
-				<Table columns={columns} dataSource={data} rowKey={(record)=>record.id.toString()} />
+				<Table columns={columns} dataSource={data} rowKey={(record)=>record.id.toString()}  />
 			</div>
 		)
 	}
