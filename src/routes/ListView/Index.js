@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Input, DatePicker, Select } from 'antd';
+import { Table, Input, DatePicker, Select, Button } from 'antd';
 import SearchBar from '../../components/SearchBar/Index';
 
 const Option = Select.Option;
@@ -132,6 +132,11 @@ export default class ListView extends React.Component {
 	  console.log(values);
   }
 
+
+  buttonClick = () =>{
+    window.open('#/ActiveNewCreate');
+  }
+
 	render () {
 		const columns = [
 			{
@@ -195,18 +200,19 @@ export default class ListView extends React.Component {
       },{
         label:'状态',
         params:'status',
-        type:<Select >
+        type:<Select>
           <Option value="0" >全部</Option>
           <Option value="1" >报名中</Option>
           <Option value="2" >活动成型</Option>
           <Option value="3" >已结束</Option>
-        </Select>
+        </Select>,
+        defaultValue:'0'
       }
     ];
 		return (
 			<div>
-        <div>
-          <SearchBar children={childrenArr} clickSearch={this.handleSearch} />
+        <div style={{ paddingBottom:15 }}>
+          <SearchBar children={childrenArr} clickSearch={this.handleSearch} addButton={<Button style={{ marginLeft:20 }} onClick={this.buttonClick} >创建新活动</Button>} />
         </div>
 				<Table columns={columns} dataSource={data} rowKey={(record)=>record.id.toString()}  />
 			</div>

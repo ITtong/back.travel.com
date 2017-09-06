@@ -9,23 +9,35 @@ class SearchBarComponent extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      childrenData:[]
+      childrenData:[],
+      defaultObj:{},
+      addButton:''
     }
   }
 
   componentWillMount () {
     this.setState({
-      childrenData:this.props.children
+      childrenData:this.props.children,
+      addButton:this.props.addButton
     })
-
   }
   componentDidMount () {
-    this.props.form.setFieldsValue ({status:'0'})
+    let obj = {};
+    this.state.childrenData ? this.state.childrenData.map((item,index)=>{
+      if(item.defaultValue) {
+        obj[item.params] = item.defaultValue;
+      }
+    }):''
+    this.setState({
+      defaultObj:obj
+    })
+    this.props.form.setFieldsValue (obj)
   }
 
   componentWillReceiveProps (nextProps) {
     this.setState ({
-      childrenData:nextProps.children
+      childrenData:nextProps.children,
+      addButton:nextProps.addButton
     })
   }
 
@@ -39,6 +51,7 @@ class SearchBarComponent extends React.Component {
 
   handleReset = () => {
     this.props.form.resetFields();
+    this.props.form.setFieldsValue (this.state.defaultObj)
   }
 
 
@@ -77,6 +90,9 @@ class SearchBarComponent extends React.Component {
             <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
               清除条件
             </Button>
+            {
+              this.state.addButton
+            }
           </Col>
         </Row>
       </Form>
