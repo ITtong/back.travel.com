@@ -4,6 +4,7 @@
   padding: 0 16px;
   cursor: pointer;
   transition: color .3s;
+  float:left;
 }
 
 #components-layout-demo-custom-trigger .trigger:hover {
@@ -17,4 +18,8 @@
   margin: 16px;
 }
 
-
+#components-layout-demo-custom-trigger .title {
+  font-size:16px;
+  float: left;
+  margin-left: 100px;
+}

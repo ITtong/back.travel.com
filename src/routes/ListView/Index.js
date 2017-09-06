@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { Table } from 'antd';
-
+import { Table, Input } from 'antd';
+import SearchBar from '../../components/SearchBar/Index';
 
 const data = [
 	{
@@ -74,7 +73,47 @@ const data = [
 		really_num:33,
 		max_num:45,
 		status:'火热报名中'
-	},
+	},{
+    id:8,
+    title:'中秋节西山徒步',
+    leader:'佟硕',
+    start_date:'2017-12-01',
+    end_date:'2017-12-03',
+    min_num:30,
+    really_num:33,
+    max_num:45,
+    status:'火热报名中'
+  },{
+    id:9,
+    title:'中秋节西山徒步',
+    leader:'佟硕',
+    start_date:'2017-12-01',
+    end_date:'2017-12-03',
+    min_num:30,
+    really_num:33,
+    max_num:45,
+    status:'火热报名中'
+  },{
+    id:10,
+    title:'中秋节西山徒步',
+    leader:'佟硕',
+    start_date:'2017-12-01',
+    end_date:'2017-12-03',
+    min_num:30,
+    really_num:33,
+    max_num:45,
+    status:'火热报名中'
+  },{
+    id:11,
+    title:'中秋节西山徒步',
+    leader:'佟硕',
+    start_date:'2017-12-01',
+    end_date:'2017-12-03',
+    min_num:30,
+    really_num:33,
+    max_num:45,
+    status:'火热报名中'
+  },
 ]
 
 
@@ -87,7 +126,9 @@ export default class ListView extends React.Component {
 		}
 	}
 
-
+  handleSearch = (values) => {
+	  console.log(values);
+  }
 
 	render () {
 		const columns = [
@@ -131,9 +172,27 @@ export default class ListView extends React.Component {
 					)
 				}
 			}
-		]
+		];
+    const childrenArr = [
+      {
+        label:'ID',
+        params:'id',
+        type:<Input />
+      },{
+        label:'标题',
+        params:'title',
+        type:<Input />
+      },{
+        label:'领队',
+        params:'leader',
+        type:<Input />
+      }
+    ];
 		return (
 			<div>
+        <div>
+          <SearchBar children={childrenArr} clickSearch={this.handleSearch} />
+        </div>
 				<Table columns={columns} dataSource={data} rowKey={(record)=>record.id.toString()}  />
 			</div>
 		)

@@ -45,8 +45,9 @@ export default class ManLayout extends React.Component {
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+            <div className="title" >燕客行后台管理系统</div>
           </Header>
-          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>{this.props.children}</Content>
+          <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280, overflow:'auto' }}>{this.props.children}</Content>
         </Layout>
       </Layout>
     </div>
