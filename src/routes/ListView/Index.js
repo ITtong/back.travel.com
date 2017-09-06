@@ -1,6 +1,8 @@
 import React from 'react';
-import { Table, Input } from 'antd';
+import { Table, Input, DatePicker, Select } from 'antd';
 import SearchBar from '../../components/SearchBar/Index';
+
+const Option = Select.Option;
 
 const data = [
 	{
@@ -177,15 +179,28 @@ export default class ListView extends React.Component {
       {
         label:'ID',
         params:'id',
-        type:<Input />
+        type:<Input placeholder="ID查询" />
       },{
         label:'标题',
         params:'title',
-        type:<Input />
+        type:<Input placeholder="标题查询" />
       },{
         label:'领队',
         params:'leader',
-        type:<Input />
+        type:<Input placeholder="领队查询" />
+      },{
+        label:'开始时间',
+        params:'start_date',
+        type:<DatePicker />
+      },{
+        label:'状态',
+        params:'status',
+        type:<Select >
+          <Option value="0" >全部</Option>
+          <Option value="1" >报名中</Option>
+          <Option value="2" >活动成型</Option>
+          <Option value="3" >已结束</Option>
+        </Select>
       }
     ];
 		return (

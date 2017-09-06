@@ -17,6 +17,10 @@ class SearchBarComponent extends React.Component {
     this.setState({
       childrenData:this.props.children
     })
+
+  }
+  componentDidMount () {
+    this.props.form.setFieldsValue ({status:'0'})
   }
 
   componentWillReceiveProps (nextProps) {
@@ -69,9 +73,9 @@ class SearchBarComponent extends React.Component {
         <Row gutter={40}>{this.getFields()}</Row>
         <Row>
           <Col span={24} style={{ textAlign: 'right' }}>
-            <Button type="primary" htmlType="submit">Search</Button>
+            <Button type="primary" htmlType="submit">查询</Button>
             <Button style={{ marginLeft: 8 }} onClick={this.handleReset}>
-              Clear
+              清除条件
             </Button>
           </Col>
         </Row>
