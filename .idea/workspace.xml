@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dbe03740-9670-49f2-ba96-fe344e462c99" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/SearchBar/Index.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" afterPath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,12 +19,12 @@
       <file leaf-file-name="Index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+            <state relative-caret-position="92">
+              <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#591#757#0" expanded="false" />
-                <element signature="e#790#958#0" expanded="false" />
+                <element signature="e#792#958#0" expanded="false" />
+                <element signature="e#991#1159#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -88,10 +86,8 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-2560" />
-    <option name="y" value="23" />
-    <option name="width" value="2560" />
-    <option name="height" value="1057" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -228,18 +224,18 @@
       <option name="presentableId" value="Default" />
       <updated>1504584510237</updated>
       <workItem from="1504584511630" duration="9625000" />
-      <workItem from="1504614117788" duration="14647000" />
+      <workItem from="1504614117788" duration="15943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24272000" />
+    <option name="totallyTimeSpent" value="25568000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2560" y="0" width="2560" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112687156" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22734499" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -450,12 +446,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+        <state relative-caret-position="92">
+          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#591#757#0" expanded="false" />
-            <element signature="e#790#958#0" expanded="false" />
+            <element signature="e#792#958#0" expanded="false" />
+            <element signature="e#991#1159#0" expanded="false" />
           </folding>
         </state>
       </provider>
