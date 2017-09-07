@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dbe03740-9670-49f2-ba96-fe344e462c99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css" afterPath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" afterPath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,32 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="270" column="40" lean-forward="false" selection-start-line="270" selection-start-column="40" selection-end-line="270" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#1543#1709#0" expanded="false" />
-                <element signature="e#1742#1910#0" expanded="false" />
-                <element signature="e#2051#2870#0" expanded="false" />
-                <element signature="e#3073#3399#0" expanded="false" />
-                <element signature="e#3409#3733#0" expanded="false" />
-                <element signature="e#3743#4035#0" expanded="false" />
-                <element signature="e#4045#4673#0" expanded="false" />
-                <element signature="e#4683#4991#0" expanded="false" />
-                <element signature="e#5001#5309#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -76,7 +54,6 @@
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/routes/Demo.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/.eslintrc" />
         <option value="$PROJECT_DIR$/src/ManLayout/Index.js" />
         <option value="$PROJECT_DIR$/src/ManLayout/Index.css" />
@@ -86,6 +63,9 @@
         <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css" />
         <option value="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -168,37 +148,6 @@
               <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="SearchBar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="ActiveNewCreate" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -255,12 +204,12 @@
       <workItem from="1504584511630" duration="9625000" />
       <workItem from="1504614117788" duration="17352000" />
       <workItem from="1504756151743" duration="2212000" />
-      <workItem from="1504775512580" duration="4628000" />
+      <workItem from="1504775512580" duration="5200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33817000" />
+    <option name="totallyTimeSpent" value="34389000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="0" width="2560" height="1080" extended-state="0" />
@@ -323,7 +272,7 @@
         <state relative-caret-position="2783">
           <caret line="141" column="29" lean-forward="true" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#1543#1709#0" expanded="false" />
             <element signature="e#1742#1910#0" expanded="false" />
             <element signature="e#2051#2870#0" expanded="false" />
@@ -423,13 +372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="39" lean-forward="true" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -489,10 +431,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="270" column="40" lean-forward="false" selection-start-line="270" selection-start-column="40" selection-end-line="270" selection-end-column="40" />
+        <state relative-caret-position="2921">
+          <caret line="257" column="19" lean-forward="true" selection-start-line="257" selection-start-column="19" selection-end-line="257" selection-end-column="19" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#1543#1709#0" expanded="false" />
             <element signature="e#1742#1910#0" expanded="false" />
             <element signature="e#2051#2870#0" expanded="false" />
@@ -503,6 +445,30 @@
             <element signature="e#4683#4991#0" expanded="false" />
             <element signature="e#5001#5309#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="85" column="37" lean-forward="true" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
