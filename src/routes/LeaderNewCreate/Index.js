@@ -11,7 +11,7 @@ const leaderData = [{id:1, name:'佟硕'},{id:2, name:'张三'},{id:3, name:'李
 
 let uuid = 0;
 
-class ActiveNewCreateComponent extends React.Component {
+class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -284,6 +284,6 @@ class ActiveNewCreateComponent extends React.Component {
   }
 }
 
-const ActiveNewCreate = Form.create()(ActiveNewCreateComponent);
+const WrappedRegistrationForm = Form.create()(RegistrationForm);
 
-export default ActiveNewCreate
+export default WrappedRegistrationForm
