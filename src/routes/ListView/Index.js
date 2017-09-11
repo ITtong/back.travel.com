@@ -155,7 +155,6 @@ export default class ListView extends React.Component {
 	  const options = {
       ...values,
       start_time:values['start_date'] ? values['start_date'].format('YYYY-MM-DD'):'',
-      leader_name:values['leader'],
       page:1,
       page_size:20
     };
@@ -210,12 +209,14 @@ export default class ListView extends React.Component {
 				title:'状态',//  活动成型/火热报名中/已结束/
 				dataIndex:'join_status',
         render: (text, record) => {
-          if(text === '名额充足') {
-            return (<Tag color="#87d068" >{text}</Tag>)
-          } else if(text === '火热报名中') {
-            return (<Tag color="#f00" >{text}</Tag>)
+          if(record.join_status === 1) {
+            return (<Tag color="#87d068" >名额充足</Tag>)
+          } else if(record.join_status === 2) {
+            return (<Tag color="#ff66ff" >火热报名中</Tag>)
+          } else if(record.join_status === 3) {
+            return (<Tag color="#f00" >名额紧缺</Tag>)
           } else {
-            return (<Tag color="#000" >{text}</Tag>)
+            return (<Tag color="#000" >已结束</Tag>)
           }
         }
 			},{
@@ -241,7 +242,7 @@ export default class ListView extends React.Component {
         type:<Input placeholder="标题查询" />
       },{
         label:'领队',
-        params:'leader',
+        params:'leader_name',
         type:<Input placeholder="领队查询" />
       },{
         label:'开始时间',
@@ -249,12 +250,13 @@ export default class ListView extends React.Component {
         type:<DatePicker style={{ width:'100%' }} />
       },{
         label:'状态',
-        params:'status',
+        params:'join_status',
         type:<Select>
           <Option value="0" >全部</Option>
-          <Option value="1" >报名中</Option>
-          <Option value="2" >活动成型</Option>
-          <Option value="3" >已结束</Option>
+          <Option value="1" >名额充足</Option>
+          <Option value="2" >火热报名中</Option>
+          <Option value="3" >名额紧缺</Option>
+          <Option value="-1" >已结束</Option>
         </Select>,
         defaultValue:'0'
       }
