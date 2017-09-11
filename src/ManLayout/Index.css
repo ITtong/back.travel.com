@@ -23,3 +23,12 @@
   float: left;
   margin-left: 100px;
 }
+
+
+.ant-menu.ant-menu-vertical.ant-menu-dark.ant-menu-inline-collapsed.ant-menu-root i {
+  margin-top: 0;
+}
+
+.ant-menu.ant-menu-inline.ant-menu-dark.ant-menu-root i {
+  margin-top: 15px;
+}

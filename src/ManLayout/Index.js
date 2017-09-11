@@ -25,16 +25,12 @@ export default class ManLayout extends React.Component {
             <div className="logo" />
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
               <Menu.Item key="1">
-                <Icon type="user" />
-                <span>nav 1</span>
+                <Icon style={{ float:'left' }} type="user" />
+                <a style={{ color:'#fff', float:'left' }} href="#/ActiveList">活动列表</a>
               </Menu.Item>
               <Menu.Item key="2">
-                <Icon type="video-camera" />
-                <span>nav 2</span>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <Icon type="upload" />
-                <span>nav 3</span>
+                <Icon style={{ float:'left' }} type="video-camera" />
+                <a style={{ color:'#fff', float:'left' }} href="#/LeaderList">领队列表</a>
               </Menu.Item>
             </Menu>
           </Sider>

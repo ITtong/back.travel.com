@@ -45,6 +45,11 @@ class SearchBarComponent extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       //console.log('Received values of form: ', values);
+      for(let key in values) {
+        if(values[key] === undefined) {
+          values[key] = ''
+        }
+      }
       this.props.clickSearch(values);
     });
   }

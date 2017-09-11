@@ -10,7 +10,7 @@ function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Route path="/" component={ManLayout} >
-      	<Route path='Index' component={ListView} />
+      	<Route path='ActiveList' component={ListView} />
         <Route path='ActiveNewCreate' component={ActiveNewCreate} />
         <Route path='LeaderList' component={LeaderList} />
         <Route path='LeaderNewCreate' component={LeaderNewCreate} />
