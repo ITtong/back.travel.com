@@ -2,6 +2,9 @@ import React from 'react';
 
 
 import { Form, Input, Icon, Select, Row, Col, Button, DatePicker, Upload } from 'antd';
+import moment from 'moment';
+import getParams from '../../utils/getParams';
+import request from '../../utils/request';
 import './Index.css';
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -16,14 +19,38 @@ class ActiveNewCreateComponent extends React.Component {
     confirmDirty: false,
     autoCompleteResult: [],
     leaderArr:[],
+    article:{},
+    fileList:[],
+    routingArr:[],
 
   };
-  componentWillMount () {
+  componentDidMount () {
     this.setState({
       leaderArr:leaderData
     })
+    let id = parseInt(getParams('id'));
+    if(id) {
+      this.getDetailData(id);
+    }
   }
-
+  getDetailData = (id) => {
+    request('op/article/data',{id},'GET')
+      .then(data=>{
+        if(data.data.code >= 0) {
+          let fileList = data.data.article.pics.map((item, index)=> {
+            return {...item, uid:index, url:item.pic_url, thumbUrl:item.pic_url}
+          })
+          let routingArr = data.data.article.schedules.map((item,index)=>{
+            return item.content
+          })
+          this.setState({
+            article:data.data.article,
+            fileList,
+            routingArr
+          })
+        }
+      })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -62,6 +89,13 @@ class ActiveNewCreateComponent extends React.Component {
     });
   }
 
+  uploadResponse = (info) => {
+    if (info.file.status !== 'uploading') {
+      console.log(info.fileList);
+    }
+    this.setState({ fileList:info.fileList })
+  }
+
 
   render() {
     const { getFieldDecorator, getFieldValue } = this.props.form;
@@ -89,7 +123,7 @@ class ActiveNewCreateComponent extends React.Component {
       },
     };
 
-    getFieldDecorator('keys', { initialValue: [] });
+    getFieldDecorator('keys', { initialValue: this.state.routingArr});
     const keys = getFieldValue('keys');
     const formItems = keys.map((k, index) => {
       return (
@@ -107,6 +141,7 @@ class ActiveNewCreateComponent extends React.Component {
               whitespace: true,
               message: "请输入行程安排！",
             }],
+            initialValue:k
           })(
             <TextArea rows={6} placeholder="请输入行程安排" style={{ width: '80%', marginRight: 8 }} />
           )}
@@ -122,10 +157,18 @@ class ActiveNewCreateComponent extends React.Component {
       );
     });
     const props = {
-      action: '//jsonplaceholder.typicode.com/posts/',
+      action: 'http://47.93.224.33:8001/op/common/uploadImg',
       listType: 'picture',
-      defaultFileList: [],
+      fileList: this.state.fileList,
+      name: 'uploadFile',
+      multiple:true,
+      headers:{
+        'X-Requested-With':null
+      },
+      onChange:this.uploadResponse
     };
+
+
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -134,12 +177,13 @@ class ActiveNewCreateComponent extends React.Component {
           label="开始时间"
           hasFeedback
         >
-          {getFieldDecorator('start_date', {
+          {getFieldDecorator('start_time', {
             rules: [{
               required: true, message: '请选择活动开始时间!',
             }],
+            initialValue:moment(this.state.article.start_time,'YYYY-MM-DD') || ''
           })(
-            <DatePicker format={"YYYY-MM-DD"} />
+            <DatePicker style={{ width:260 }} format={"YYYY-MM-DD"} />
           )}
         </FormItem>
 
@@ -148,12 +192,13 @@ class ActiveNewCreateComponent extends React.Component {
           label="结束时间"
           hasFeedback
         >
-          {getFieldDecorator('end_date', {
+          {getFieldDecorator('end_time', {
             rules: [{
               required: true, message: '请选择活动开始时间!',
             }],
+            initialValue:moment(this.state.article.end_time,'YYYY-MM-DD') || ''
           })(
-            <DatePicker format={"YYYY-MM-DD"} />
+            <DatePicker style={{ width:260 }} format={"YYYY-MM-DD"} />
           )}
         </FormItem>
 
@@ -166,6 +211,7 @@ class ActiveNewCreateComponent extends React.Component {
             rules: [{
               required: true, message: '请输入活动标题!',
             }],
+            initialValue:this.state.article.title || ''
           })(
             <Input />
           )}
@@ -176,10 +222,11 @@ class ActiveNewCreateComponent extends React.Component {
           label="领队"
           hasFeedback
         >
-          {getFieldDecorator('leader', {
+          {getFieldDecorator('leader_name', {
             rules: [{
               required: true, message: '请输入活动领队!',
             }],
+            initialValue:this.state.article.leader_name || ''
           })(
             <Select>
               <Option value="0">全部</Option>
@@ -199,10 +246,11 @@ class ActiveNewCreateComponent extends React.Component {
           label="成团人数"
           hasFeedback
         >
-          {getFieldDecorator('min_num', {
+          {getFieldDecorator('least_num', {
             rules: [{
               required: true, message: '请输入成团人数!',
             }],
+            initialValue:this.state.article.least_num || ''
           })(
             <Input type="number" />
           )}
@@ -213,10 +261,11 @@ class ActiveNewCreateComponent extends React.Component {
           label="人数上限"
           hasFeedback
         >
-          {getFieldDecorator('max_num', {
+          {getFieldDecorator('most_num', {
             rules: [{
               required: true, message: '请输入人数上限!',
             }],
+            initialValue:this.state.article.most_num || ''
           })(
             <Input type="number" />
           )}
@@ -227,10 +276,11 @@ class ActiveNewCreateComponent extends React.Component {
           label="活动概述"
           hasFeedback
         >
-          {getFieldDecorator('descript', {
+          {getFieldDecorator('introduction', {
             rules: [{
               required: true, message: '请输入活动概述!',
             }],
+            initialValue:this.state.article.introduction || ''
           })(
             <TextArea rows={6} />
           )}
@@ -241,10 +291,11 @@ class ActiveNewCreateComponent extends React.Component {
           label="基本信息"
           hasFeedback
         >
-          {getFieldDecorator('message', {
+          {getFieldDecorator('information', {
             rules: [{
               required: true, message: '请输入基本信息!',
             }],
+            initialValue:this.state.article.information || ''
           })(
             <TextArea rows={6} />
           )}
@@ -253,19 +304,45 @@ class ActiveNewCreateComponent extends React.Component {
         {formItems}
         <FormItem {...formItemLayout} label="行程安排">
           <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
-            <Icon type="plus" /> Add field
+            <Icon type="plus" /> 添加行程安排
           </Button>
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="费用说明"
+          hasFeedback
+        >
+          {getFieldDecorator('price_explain', {
+            rules: [{
+              required: true, message: '请输入费用说明!',
+            }],
+            initialValue:this.state.article.price_explain || ''
+          })(
+            <TextArea rows={6} />
+          )}
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="报名须知"
+          hasFeedback
+        >
+          {getFieldDecorator('notice', {
+            rules: [{
+              required: true, message: '请输入报名须知!',
+            }],
+            initialValue:this.state.article.notice || ''
+          })(
+            <TextArea rows={6} />
+          )}
         </FormItem>
 
         <FormItem
           {...formItemLayout}
           label="上传宣传图片"
         >
-          {getFieldDecorator('pictures', {
-            rules: [{
-              required: true, message: '请上传宣传图片!',
-            }],
-          })(
+          {getFieldDecorator('pictures', {})(
             <Upload {...props}>
               <Button>
                 <Icon type="upload" />上传

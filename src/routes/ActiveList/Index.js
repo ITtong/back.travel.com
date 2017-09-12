@@ -212,7 +212,7 @@ export default class ListView extends React.Component {
           if(record.join_status === 1) {
             return (<Tag color="#87d068" >名额充足</Tag>)
           } else if(record.join_status === 2) {
-            return (<Tag color="#ff66ff" >火热报名中</Tag>)
+            return (<Tag color="#108ee9" >活动成行</Tag>)
           } else if(record.join_status === 3) {
             return (<Tag color="#f00" >名额紧缺</Tag>)
           } else {
@@ -254,7 +254,7 @@ export default class ListView extends React.Component {
         type:<Select>
           <Option value="0" >全部</Option>
           <Option value="1" >名额充足</Option>
-          <Option value="2" >火热报名中</Option>
+          <Option value="2" >活动成行</Option>
           <Option value="3" >名额紧缺</Option>
           <Option value="-1" >已结束</Option>
         </Select>,
