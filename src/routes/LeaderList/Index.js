@@ -74,7 +74,7 @@ export default class ListView extends React.Component {
 
 
   buttonClick = () =>{
-    window.open('#/leaderDetail');
+    window.open('#/leaderNewCreate');
   }
 
   render () {
@@ -100,7 +100,7 @@ export default class ListView extends React.Component {
         render (text,record) {
           return (
             <div>
-              <a href={`#/leaderDetail?id=${record.id}`} target="_blank" >查看详情</a>
+              <a href={`#/leaderNewCreate?id=${record.id}`} target="_blank" >查看详情</a>
             </div>
           )
         }

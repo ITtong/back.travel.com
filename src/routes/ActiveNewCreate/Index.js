@@ -21,6 +21,7 @@ class ActiveNewCreateComponent extends React.Component {
     leaderArr:[],
     article:{},
     fileList:[],
+    fileListCover:[],
     routingArr:[],
     uuid:0,
     loading:false,
@@ -48,6 +49,7 @@ class ActiveNewCreateComponent extends React.Component {
           this.setState({
             article:data.data.article,
             uuid:data.data.article.schedules.length,
+            fileListCover:[{uid:1, url:data.data.article.pic_url, thumbUrl:data.data.article.pic_url}],
             fileList,
             routingArr
           })
@@ -60,15 +62,49 @@ class ActiveNewCreateComponent extends React.Component {
     this.setState({
       loading:true
     })
+    let params = {};
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        if(this.state.fileListCover.length === 0) {
+          alert('请上传封面图片！');
+          return;
+        }
+        if(this.state.fileList.length !== 3) {
+          alert('请上传三张轮播图图片！');
+          return;
+        }
+        let pics = this.state.fileList.map((item,index)=> {
+          return {
+            pic_url:item.pic_url
+          }
+        })
+        params = {
+          start_time:values.start_time.format('YYYY-MM-DD'),
+          end_time:values.end_time.format('YYYY-MM-DD'),
+          title:values.title,
+          price:values.price,
+          leader_id:values.leader_name,
+          least_num:values.least_num,
+          most_num:values.most_num,
+          introduction:values.introduction,
+          information:values.information,
+          price_explain:values.price_explain,
+          notice:values.notice,
+          pics:pics,
+          schedules:[],
+          pic_url:this.state.fileListCover[0].url,
+        }
       }
     });
-    setTimeout(()=>{
-      this.setState({loading:false})
-    },2000)
-
+    console.log(this.state.fileList);
+    console.log(params);
+    // request('op/article/add',params, 'POST')
+    //   .then(data=>{
+    //     if(data.data.code >= 0) {
+    //       this.setState({loading:false})
+    //     }
+    //   })
   }
 
   remove = (k) => {
@@ -106,6 +142,15 @@ class ActiveNewCreateComponent extends React.Component {
       console.log(info.fileList);
     }
     this.setState({ fileList:info.fileList })
+  }
+
+  uploadCoverResponse = (info) => {
+    if (info.file.status !== 'uploading') {
+      console.log(info.fileList);
+    }
+    console.log(info.fileList);
+    console.log(1);
+    this.setState({ fileListCover:info.fileList })
   }
 
 
@@ -180,8 +225,44 @@ class ActiveNewCreateComponent extends React.Component {
       },
       onChange:this.uploadResponse
     };
+    const propsCover = {
+      action: 'http://47.93.224.33:8001/op/common/uploadImg',
+      listType: 'picture',
+      fileList: this.state.fileListCover,
+      name: 'uploadFile',
+      headers:{
+        'X-Requested-With':null
+      },
+      onChange:this.uploadCoverResponse
+    };
 
-
+    let initialDateStart = {};
+    let initialDateEnd = {};
+    if(getParams('id')) {
+      initialDateStart = {
+        rules: [{
+          required: true, message: '请选择活动开始时间!',
+        }],
+        initialValue:moment(this.state.article.start_time,'YYYY-MM-DD')
+      }
+      initialDateEnd = {
+        rules: [{
+          required: true, message: '请选择活动结束时间!',
+        }],
+        initialValue:moment(this.state.article.end_time,'YYYY-MM-DD')
+      }
+    } else {
+      initialDateStart = {
+        rules: [{
+          required: true, message: '请选择活动开始时间!',
+        }]
+      };
+      initialDateEnd = {
+        rules: [{
+          required: true, message: '请选择活动结束时间!',
+        }]
+      }
+    }
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -190,12 +271,7 @@ class ActiveNewCreateComponent extends React.Component {
           label="开始时间"
           hasFeedback
         >
-          {getFieldDecorator('start_time', {
-            rules: [{
-              required: true, message: '请选择活动开始时间!',
-            }],
-            initialValue:moment(this.state.article.start_time,'YYYY-MM-DD') || ''
-          })(
+          {getFieldDecorator('start_time', initialDateStart)(
             <DatePicker style={{ width:260 }} format={"YYYY-MM-DD"} />
           )}
         </FormItem>
@@ -205,12 +281,7 @@ class ActiveNewCreateComponent extends React.Component {
           label="结束时间"
           hasFeedback
         >
-          {getFieldDecorator('end_time', {
-            rules: [{
-              required: true, message: '请选择活动开始时间!',
-            }],
-            initialValue:moment(this.state.article.end_time,'YYYY-MM-DD') || ''
-          })(
+          {getFieldDecorator('end_time', initialDateEnd)(
             <DatePicker style={{ width:260 }} format={"YYYY-MM-DD"} />
           )}
         </FormItem>
@@ -227,6 +298,21 @@ class ActiveNewCreateComponent extends React.Component {
             initialValue:this.state.article.title || ''
           })(
             <Input />
+          )}
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="活动封面"
+        >
+          {getFieldDecorator('picturesCover', {})(
+            <Upload {...propsCover}>
+              {
+                this.state.fileListCover.length >= 1 ? null : <Button>
+                  <Icon type="upload" />上传
+                </Button>
+              }
+            </Upload>
           )}
         </FormItem>
 
@@ -251,6 +337,21 @@ class ActiveNewCreateComponent extends React.Component {
                 }) : ''
               }
             </Select>
+          )}
+        </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="每人价格"
+          hasFeedback
+        >
+          {getFieldDecorator('price', {
+            rules: [{
+              required: true, message: '请输入没人价格!',
+            }],
+            initialValue:this.state.article.price || ''
+          })(
+            <Input type="number" />
           )}
         </FormItem>
 
@@ -353,13 +454,15 @@ class ActiveNewCreateComponent extends React.Component {
 
         <FormItem
           {...formItemLayout}
-          label="上传宣传图片"
+          label="上传宣传图片(轮播)"
         >
           {getFieldDecorator('pictures', {})(
             <Upload {...props}>
-              <Button>
-                <Icon type="upload" />上传
-              </Button>
+              {
+                this.state.fileList >= 3 ? null : <Button>
+                  <Icon type="upload" />上传
+                </Button>
+              }
             </Upload>
           )}
         </FormItem>
