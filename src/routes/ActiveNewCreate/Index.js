@@ -12,7 +12,7 @@ const { TextArea } = Input;
 
 const leaderData = [{id:1, name:'佟硕'},{id:2, name:'张三'},{id:3, name:'李四'},{id:4, name:'王二麻子'}];
 
-let uuid = 0;
+
 
 class ActiveNewCreateComponent extends React.Component {
   state = {
@@ -22,6 +22,8 @@ class ActiveNewCreateComponent extends React.Component {
     article:{},
     fileList:[],
     routingArr:[],
+    uuid:0,
+    loading:false,
 
   };
   componentDidMount () {
@@ -45,6 +47,7 @@ class ActiveNewCreateComponent extends React.Component {
           })
           this.setState({
             article:data.data.article,
+            uuid:data.data.article.schedules.length,
             fileList,
             routingArr
           })
@@ -54,11 +57,18 @@ class ActiveNewCreateComponent extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({
+      loading:true
+    })
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
       }
     });
+    setTimeout(()=>{
+      this.setState({loading:false})
+    },2000)
+
   }
 
   remove = (k) => {
@@ -77,16 +87,18 @@ class ActiveNewCreateComponent extends React.Component {
   }
 
   add = () => {
-    uuid++;
-    const { form } = this.props;
-    // can use data-binding to get
-    const keys = form.getFieldValue('keys');
-    const nextKeys = keys.concat(uuid);
-    // can use data-binding to set
-    // important! notify form to detect changes
-    form.setFieldsValue({
-      keys: nextKeys,
-    });
+    let uid = this.state.uuid + 1;
+    this.setState({ uuid:uid },()=> {
+      const { form } = this.props;
+      // can use data-binding to get
+      const keys = form.getFieldValue('keys');
+      const nextKeys = keys.concat(this.state.uuid);
+      // can use data-binding to set
+      // important! notify form to detect changes
+      form.setFieldsValue({
+        keys: nextKeys,
+      });
+    })
   }
 
   uploadResponse = (info) => {
@@ -123,7 +135,8 @@ class ActiveNewCreateComponent extends React.Component {
       },
     };
 
-    getFieldDecorator('keys', { initialValue: this.state.routingArr});
+
+    getFieldDecorator('keys', { initialValue: this.state.routingArr });
     const keys = getFieldValue('keys');
     const formItems = keys.map((k, index) => {
       return (
@@ -131,7 +144,7 @@ class ActiveNewCreateComponent extends React.Component {
           {...formItemLayout}
           label={`行程安排${index+1}`}
           required={true}
-          key={k}
+          key={index}
           hasFeedback
         >
           {getFieldDecorator(`${k}`, {
@@ -354,7 +367,7 @@ class ActiveNewCreateComponent extends React.Component {
 
 
         <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">确认添加</Button>
+          <Button loading={this.state.loading} type="primary" htmlType="submit">确认添加</Button>
         </FormItem>
       </Form>
     );
