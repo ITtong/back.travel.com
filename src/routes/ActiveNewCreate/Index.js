@@ -23,8 +23,9 @@ class ActiveNewCreateComponent extends React.Component {
     fileList:[],
     fileListCover:[],
     routingArr:[],
-    uuid:0,
+    //uuid:0,
     loading:false,
+    schedules:[],
 
   };
   componentDidMount () {
@@ -50,6 +51,7 @@ class ActiveNewCreateComponent extends React.Component {
             article:data.data.article,
             uuid:data.data.article.schedules.length,
             fileListCover:[{uid:1, url:data.data.article.pic_url, thumbUrl:data.data.article.pic_url}],
+            schedules:data.data.article.schedules,
             fileList,
             routingArr
           })
@@ -74,11 +76,16 @@ class ActiveNewCreateComponent extends React.Component {
           alert('请上传三张轮播图图片！');
           return;
         }
+        if(this.state.schedules.length === 0) {
+          alert('请填写日程安排！');
+          return;
+        }
         let pics = this.state.fileList.map((item,index)=> {
           return {
             pic_url:item.pic_url
           }
         })
+
         params = {
           start_time:values.start_time.format('YYYY-MM-DD'),
           end_time:values.end_time.format('YYYY-MM-DD'),
@@ -92,7 +99,7 @@ class ActiveNewCreateComponent extends React.Component {
           price_explain:values.price_explain,
           notice:values.notice,
           pics:pics,
-          schedules:[],
+          schedules:this.state.schedules,
           pic_url:this.state.fileListCover[0].url,
         }
       }
@@ -108,33 +115,21 @@ class ActiveNewCreateComponent extends React.Component {
   }
 
   remove = (k) => {
-    const { form } = this.props;
-    // can use data-binding to get
-    const keys = form.getFieldValue('keys');
-    // We need at least one passenger
-    if (keys.length === 1) {
-      return;
-    }
-
-    // can use data-binding to set
-    form.setFieldsValue({
-      keys: keys.filter(key => key !== k),
-    });
+    let contentArr = this.state.schedules
+    contentArr.splice(k,1);
+    this.setState({ schedules:contentArr })
   }
 
   add = () => {
-    let uid = this.state.uuid + 1;
-    this.setState({ uuid:uid },()=> {
-      const { form } = this.props;
-      // can use data-binding to get
-      const keys = form.getFieldValue('keys');
-      const nextKeys = keys.concat(this.state.uuid);
-      // can use data-binding to set
-      // important! notify form to detect changes
-      form.setFieldsValue({
-        keys: nextKeys,
-      });
-    })
+    let contentArr = this.state.schedules;
+    let newArr = [...contentArr, {content: '', date: ''}];
+    this.setState({ schedules:newArr })
+  }
+
+  schedulesChange = (index, e) => {
+    let content = this.state.schedules;
+    content[index].content = e.target.value;
+    this.setState({ schedules:content })
   }
 
   uploadResponse = (info) => {
@@ -143,7 +138,6 @@ class ActiveNewCreateComponent extends React.Component {
     }
     this.setState({ fileList:info.fileList })
   }
-
   uploadCoverResponse = (info) => {
     if (info.file.status !== 'uploading') {
       console.log(info.fileList);
@@ -181,39 +175,6 @@ class ActiveNewCreateComponent extends React.Component {
     };
 
 
-    getFieldDecorator('keys', { initialValue: this.state.routingArr });
-    const keys = getFieldValue('keys');
-    const formItems = keys.map((k, index) => {
-      return (
-        <FormItem
-          {...formItemLayout}
-          label={`行程安排${index+1}`}
-          required={true}
-          key={index}
-          hasFeedback
-        >
-          {getFieldDecorator(`${k}`, {
-            //validateTrigger: ['onChange', 'onBlur'],
-            rules: [{
-              required: true,
-              whitespace: true,
-              message: "请输入行程安排！",
-            }],
-            initialValue:k
-          })(
-            <TextArea rows={6} placeholder="请输入行程安排" style={{ width: '80%', marginRight: 8 }} />
-          )}
-          {keys.length > 1 ? (
-            <Icon
-              className="dynamic-delete-button"
-              type="minus-circle-o"
-              disabled={keys.length === 1}
-              onClick={() => this.remove(k)}
-            />
-          ) : null}
-        </FormItem>
-      );
-    });
     const props = {
       action: 'http://47.93.224.33:8001/op/common/uploadImg',
       listType: 'picture',
@@ -235,7 +196,6 @@ class ActiveNewCreateComponent extends React.Component {
       },
       onChange:this.uploadCoverResponse
     };
-
     let initialDateStart = {};
     let initialDateEnd = {};
     if(getParams('id')) {
@@ -415,7 +375,28 @@ class ActiveNewCreateComponent extends React.Component {
           )}
         </FormItem>
 
-        {formItems}
+        {this.state.schedules ? this.state.schedules.map((item, index) => {
+          return (
+            <FormItem
+              {...formItemLayout}
+              label={`行程安排${index+1}`}
+              required={true}
+              key={index}
+              hasFeedback
+            >
+              <TextArea value={this.state.schedules[index].content} onChange={this.schedulesChange.bind(this, index)} rows={6} placeholder="请输入行程安排" style={{ width: '80%', marginRight: 8 }} />
+
+              {this.state.schedules.length > 1 ? (
+                <Icon
+                  className="dynamic-delete-button"
+                  type="minus-circle-o"
+                  disabled={this.state.schedules.length === 1}
+                  onClick={() => this.remove(index)}
+                />
+              ) : null}
+            </FormItem>
+          );
+        }) : null}
         <FormItem {...formItemLayout} label="行程安排">
           <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
             <Icon type="plus" /> 添加行程安排
@@ -466,8 +447,6 @@ class ActiveNewCreateComponent extends React.Component {
             </Upload>
           )}
         </FormItem>
-
-
 
         <FormItem {...tailFormItemLayout}>
           <Button loading={this.state.loading} type="primary" htmlType="submit">确认添加</Button>
