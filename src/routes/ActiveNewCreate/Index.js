@@ -263,7 +263,7 @@ class ActiveNewCreateComponent extends React.Component {
 
         <FormItem
           {...formItemLayout}
-          label="活动封面"
+          label={<sapn><span style={{ color:'#f04134',marginRight:4,fontFamily:'SimSun' }} >*</span>活动封面</sapn>}
         >
           {getFieldDecorator('picturesCover', {})(
             <Upload {...propsCover}>
@@ -397,7 +397,7 @@ class ActiveNewCreateComponent extends React.Component {
             </FormItem>
           );
         }) : null}
-        <FormItem {...formItemLayout} label="行程安排">
+        <FormItem {...formItemLayout} label={<sapn><span style={{ color:'#f04134',marginRight:4,fontFamily:'SimSun' }} >*</span>行程安排</sapn>}>
           <Button type="dashed" onClick={this.add} style={{ width: '60%' }}>
             <Icon type="plus" /> 添加行程安排
           </Button>
@@ -435,7 +435,7 @@ class ActiveNewCreateComponent extends React.Component {
 
         <FormItem
           {...formItemLayout}
-          label="上传宣传图片(轮播)"
+          label={<sapn><span style={{ color:'#f04134',marginRight:4,fontFamily:'SimSun' }} >*</span>上传宣传图片(轮播)</sapn>}
         >
           {getFieldDecorator('pictures', {})(
             <Upload {...props}>
