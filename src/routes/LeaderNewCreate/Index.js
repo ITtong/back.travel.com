@@ -5,14 +5,15 @@ import { Form, Input, Icon, Select, Row, Col, Button, DatePicker, Upload, Radio 
 import './Index.css';
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
-const Option = Select.Option;
-
+const { TextArea } = Input;
 
 class RegistrationForm extends React.Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
     leaderArr:[],
+    fileListHeader:[],
+    loading:false,
 
   };
   componentWillMount () {
@@ -22,11 +23,22 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({ loading:true })
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
       }
     });
+    setTimeout(()=>{
+      this.setState({ loading:false })
+    },1000)
+  }
+
+  uploadCoverResponse = (info) => {
+    if (info.file.status === 'done') {
+      info.fileList[info.fileList.length-1].url = info.fileList[info.fileList.length-1].response.file_src;
+    }
+    this.setState({ fileListHeader:info.fileList })
   }
 
   render() {
@@ -54,25 +66,29 @@ class RegistrationForm extends React.Component {
         },
       },
     };
-    const formItemLayoutSex = {
+    const formItemLayoutSpecial = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 8 },
+        sm: { span: 3 },
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 16 },
+        sm: { span: 20 },
       },
     };
     const props = {
-      action: '//jsonplaceholder.typicode.com/posts/',
-      listType: 'picture',
-      defaultFileList: [],
+      action: 'http://47.93.224.33:8001/op/common/uploadImg',
+      listType: 'picture-card',
+      fileList: this.state.fileListHeader,
+      name: 'uploadFile',
+      headers:{
+        'X-Requested-With':null
+      },
+      onChange:this.uploadCoverResponse
     };
 
-
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit} style={{ overflow:'hidden' }} >
+      <Form className="leaderNewCreateForm" layout="inline" onSubmit={this.handleSubmit} >
         <div>
           <FormItem
             {...formItemLayout}
@@ -89,7 +105,7 @@ class RegistrationForm extends React.Component {
             )}
           </FormItem>
           <FormItem
-            {...formItemLayoutSex}
+            {...formItemLayout}
             label="性别"
             style={{ width:200 }}
           >
@@ -104,11 +120,14 @@ class RegistrationForm extends React.Component {
               </RadioGroup>
             )}
           </FormItem>
+        </div>
+
+        <div style={{ marginTop:15 }} >
           <FormItem
             {...formItemLayout}
             label="电话"
             hasFeedback
-            style={{ width:300 }}
+            style={{ width:200 }}
           >
             {getFieldDecorator('tel', {
               rules: [{
@@ -118,32 +137,80 @@ class RegistrationForm extends React.Component {
               <Input />
             )}
           </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label="微信"
+            hasFeedback
+            style={{ width:200 }}
+          >
+            {getFieldDecorator('weChat', {
+              rules: [{
+                required: true, message: '请输入微信号!',
+              }],
+            })(
+              <Input />
+            )}
+          </FormItem>
         </div>
 
+        <div style={{ marginTop:15 }} >
+          <FormItem
+            {...formItemLayoutSpecial}
+            label="特长"
+            hasFeedback
+            style={{ width:400 }}
+          >
+            {getFieldDecorator('special', {
+              rules: [{
+                required: true, message: '请输入个人特长!',
+              }],
+            })(
+              <TextArea style={{ width:333 }} placeholder="20字左右概括(分配路线会考虑到特长，请如实填写！)" rows={4} />
+            )}
+          </FormItem>
+        </div>
 
+        <div style={{ marginTop:15 }} >
+          <FormItem
+            {...formItemLayoutSpecial}
+            label="简介"
+            hasFeedback
+            style={{ width:400 }}
+          >
+            {getFieldDecorator('leader_introduce', {
+              rules: [{
+                required: true, message: '请输入个人简介!',
+              }],
+            })(
+              <TextArea style={{ width:333 }} placeholder="20字左右概括，展示出你的能力和旅行经历！" rows={4} />
+            )}
+          </FormItem>
+        </div>
 
-
-        {/*<FormItem*/}
-          {/*{...formItemLayout}*/}
-          {/*label="上传宣传图片"*/}
-        {/*>*/}
-          {/*{getFieldDecorator('pictures', {*/}
-            {/*rules: [{*/}
-              {/*required: true, message: '请上传宣传图片!',*/}
-            {/*}],*/}
-          {/*})(*/}
-            {/*<Upload {...props}>*/}
-              {/*<Button>*/}
-                {/*<Icon type="upload" />上传*/}
-              {/*</Button>*/}
-            {/*</Upload>*/}
-          {/*)}*/}
-        {/*</FormItem>*/}
-
-
-
-        <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">确认添加</Button>
+        <div style={{ marginTop:15 }} >
+          <FormItem
+            {...formItemLayout}
+            label="上传头像"
+            style={{ width:300,height:105 }}
+          >
+            {getFieldDecorator('header_pic', {
+              rules: [{
+                required: true, message: '请上传头像!',
+              }],
+            })(
+              <Upload {...props}>
+                {
+                  this.state.fileListHeader.length >= 1 ? null : <div>
+                    <Icon type="plus" />
+                    <div className="ant-upload-text">上传</div>
+                  </div>
+                }
+              </Upload>
+            )}
+          </FormItem>
+        </div>
+        <FormItem {...tailFormItemLayout} style={{ marginLeft:'15%', marginTop:15 }} >
+          <Button loading={this.state.loading} type="primary" htmlType="submit">确认添加</Button>
         </FormItem>
       </Form>
     );

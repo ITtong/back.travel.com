@@ -23,7 +23,6 @@ class ActiveNewCreateComponent extends React.Component {
     fileList:[],
     fileListCover:[],
     routingArr:[],
-    //uuid:0,
     loading:false,
     schedules:[],
 
@@ -133,17 +132,15 @@ class ActiveNewCreateComponent extends React.Component {
   }
 
   uploadResponse = (info) => {
-    if (info.file.status !== 'uploading') {
-      console.log(info.fileList);
+    if (info.file.status === 'done') {
+      info.fileList[info.fileList.length-1].url = info.fileList[info.fileList.length-1].response.file_src;
     }
     this.setState({ fileList:info.fileList })
   }
   uploadCoverResponse = (info) => {
-    if (info.file.status !== 'uploading') {
-      console.log(info.fileList);
+    if (info.file.status === 'done') {
+      info.fileList[info.fileList.length-1].url = info.fileList[info.fileList.length-1].response.file_src;
     }
-    console.log(info.fileList);
-    console.log(1);
     this.setState({ fileListCover:info.fileList })
   }
 
@@ -177,7 +174,7 @@ class ActiveNewCreateComponent extends React.Component {
 
     const props = {
       action: 'http://47.93.224.33:8001/op/common/uploadImg',
-      listType: 'picture',
+      listType: 'picture-card',
       fileList: this.state.fileList,
       name: 'uploadFile',
       multiple:true,
@@ -188,7 +185,7 @@ class ActiveNewCreateComponent extends React.Component {
     };
     const propsCover = {
       action: 'http://47.93.224.33:8001/op/common/uploadImg',
-      listType: 'picture',
+      listType: 'picture-card',
       fileList: this.state.fileListCover,
       name: 'uploadFile',
       headers:{
@@ -268,9 +265,10 @@ class ActiveNewCreateComponent extends React.Component {
           {getFieldDecorator('picturesCover', {})(
             <Upload {...propsCover}>
               {
-                this.state.fileListCover.length >= 1 ? null : <Button>
-                  <Icon type="upload" />上传
-                </Button>
+                this.state.fileListCover.length >= 1 ? null : <div>
+                  <Icon type="plus" />
+                  <div className="ant-upload-text">上传</div>
+                </div>
               }
             </Upload>
           )}
@@ -440,9 +438,10 @@ class ActiveNewCreateComponent extends React.Component {
           {getFieldDecorator('pictures', {})(
             <Upload {...props}>
               {
-                this.state.fileList >= 3 ? null : <Button>
-                  <Icon type="upload" />上传
-                </Button>
+                this.state.fileList.length >= 3 ? null : <div>
+                  <Icon type="plus" />
+                  <div className="ant-upload-text">上传</div>
+                </div>
               }
             </Upload>
           )}

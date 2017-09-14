@@ -11,3 +11,7 @@
   animation-name: uploadAnimateInlineOut;
 }
 
+.leaderNewCreateForm {
+  width:450px;
+  margin:0 auto;
+}
