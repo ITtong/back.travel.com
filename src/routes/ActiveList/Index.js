@@ -145,8 +145,6 @@ export default class ListView extends React.Component {
           <Option value="-1" >已结束</Option>
         </Select>,
         defaultValue:'0'
-      }, {
-
       }
     ];
 		return (
