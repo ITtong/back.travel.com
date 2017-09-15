@@ -5,120 +5,6 @@ import request from '../../utils/request';
 
 const Option = Select.Option;
 
-const data = [
-	{
-		id:1,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:2,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:3,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:4,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:5,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:6,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-		id:7,
-		title:'中秋节西山徒步',
-		leader:'佟硕',
-		start_date:'2017-12-01',
-		end_date:'2017-12-03',
-		min_num:30,
-		really_num:33,
-		max_num:45,
-		status:'火热报名中'
-	},{
-    id:8,
-    title:'中秋节西山徒步',
-    leader:'佟硕',
-    start_date:'2017-12-01',
-    end_date:'2017-12-03',
-    min_num:30,
-    really_num:33,
-    max_num:45,
-    status:'火热报名中'
-  },{
-    id:9,
-    title:'中秋节西山徒步',
-    leader:'佟硕',
-    start_date:'2017-12-01',
-    end_date:'2017-12-03',
-    min_num:30,
-    really_num:33,
-    max_num:45,
-    status:'火热报名中'
-  },{
-    id:10,
-    title:'中秋节西山徒步',
-    leader:'佟硕',
-    start_date:'2017-12-01',
-    end_date:'2017-12-03',
-    min_num:30,
-    really_num:33,
-    max_num:45,
-    status:'火热报名中'
-  },{
-    id:11,
-    title:'中秋节西山徒步',
-    leader:'佟硕',
-    start_date:'2017-12-01',
-    end_date:'2017-12-03',
-    min_num:30,
-    really_num:33,
-    max_num:45,
-    status:'火热报名中'
-  },
-]
-
 
 
 export default class ListView extends React.Component {
@@ -259,6 +145,8 @@ export default class ListView extends React.Component {
           <Option value="-1" >已结束</Option>
         </Select>,
         defaultValue:'0'
+      }, {
+
       }
     ];
 		return (

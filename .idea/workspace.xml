@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dbe03740-9670-49f2-ba96-fe344e462c99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css" afterPath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" afterPath="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.css" afterPath="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.js" afterPath="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveList/Index.js" afterPath="$PROJECT_DIR$/src/routes/ActiveList/Index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,33 +19,7 @@
     <favorites_list name="back.travel.com" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="12" column="95" lean-forward="true" selection-start-line="12" selection-start-column="95" selection-end-line="12" selection-end-column="95" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#3227#3346#0" expanded="false" />
-                <element signature="e#4263#4429#0" expanded="false" />
-                <element signature="e#4462#4630#0" expanded="false" />
-                <element signature="e#5984#6244#0" expanded="false" />
-                <element signature="e#6254#6510#0" expanded="false" />
-                <element signature="e#6520#6868#0" expanded="false" />
-                <element signature="e#7415#8110#0" expanded="false" />
-                <element signature="e#8120#8482#0" expanded="false" />
-                <element signature="e#8492#8862#0" expanded="false" />
-                <element signature="e#8872#9240#0" expanded="false" />
-                <element signature="e#9250#9624#0" expanded="false" />
-                <element signature="e#11176#11552#0" expanded="false" />
-                <element signature="e#11562#11924#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -101,6 +72,7 @@
         <option value="$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js" />
         <option value="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.js" />
         <option value="$PROJECT_DIR$/src/routes/LeaderNewCreate/Index.css" />
+        <option value="$PROJECT_DIR$/src/routes/ActiveList/Index.js" />
       </list>
     </option>
   </component>
@@ -120,11 +92,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="-2560" />
-    <option name="y" value="23" />
-    <option name="width" value="1801" />
-    <option name="height" value="847" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1859" />
+    <option name="y" value="135" />
+    <option name="width" value="1280" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -191,6 +163,19 @@
               <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="SearchBar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -198,14 +183,7 @@
               <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="ActiveNewCreate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="back.travel.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="back.travel.com" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-              <item name="LeaderNewCreate" type="462c0819:PsiDirectoryNode" />
+              <item name="ActiveList" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,18 +247,17 @@
       <workItem from="1505112353734" duration="6166000" />
       <workItem from="1505123932053" duration="18264000" />
       <workItem from="1505270581342" duration="14691000" />
-      <workItem from="1505329324701" duration="9684000" />
+      <workItem from="1505329324701" duration="14519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95892000" />
+    <option name="totallyTimeSpent" value="100727000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2560" y="0" width="2560" height="1080" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1859" y="135" width="1280" height="728" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117809296" sideWeight="0.49652433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21462639" sideWeight="0.49652433" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -317,7 +294,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#3227#3346#0" expanded="false" />
             <element signature="e#4263#4429#0" expanded="false" />
             <element signature="e#4462#4630#0" expanded="false" />
@@ -340,7 +317,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#3227#3346#0" expanded="false" />
             <element signature="e#4263#4429#0" expanded="false" />
             <element signature="e#4462#4630#0" expanded="false" />
@@ -378,9 +355,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#255#2109#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -388,9 +363,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3680">
           <caret line="162" column="22" lean-forward="true" selection-start-line="162" selection-start-column="22" selection-end-line="162" selection-end-column="22" />
-          <folding>
-            <element signature="e#255#2109#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -399,7 +372,7 @@
         <state relative-caret-position="2783">
           <caret line="141" column="29" lean-forward="true" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#3227#3346#0" expanded="false" />
             <element signature="e#4263#4429#0" expanded="false" />
             <element signature="e#4462#4630#0" expanded="false" />
@@ -421,9 +394,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#255#2109#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -551,24 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/ActiveList/Index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="156" column="80" lean-forward="false" selection-start-line="156" selection-start-column="68" selection-end-line="156" selection-end-column="80" />
-          <folding>
-            <element signature="e#255#2109#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SearchBar/Index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -626,10 +579,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/ActiveNewCreate/Index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="299">
           <caret line="12" column="95" lean-forward="true" selection-start-line="12" selection-start-column="95" selection-end-line="12" selection-end-column="95" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
             <element signature="e#3227#3346#0" expanded="false" />
             <element signature="e#4263#4429#0" expanded="false" />
             <element signature="e#4462#4630#0" expanded="false" />
@@ -643,6 +596,26 @@
             <element signature="e#9250#9624#0" expanded="false" />
             <element signature="e#11176#11552#0" expanded="false" />
             <element signature="e#11562#11924#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SearchBar/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="73" column="44" lean-forward="true" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/ActiveList/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1351#2498#0" expanded="false" />
+            <element signature="e#2524#3293#0" expanded="false" />
           </folding>
         </state>
       </provider>
