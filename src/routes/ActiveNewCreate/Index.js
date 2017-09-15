@@ -105,12 +105,15 @@ class ActiveNewCreateComponent extends React.Component {
     });
     console.log(this.state.fileList);
     console.log(params);
-    // request('op/article/add',params, 'POST')
-    //   .then(data=>{
-    //     if(data.data.code >= 0) {
-    //       this.setState({loading:false})
-    //     }
-    //   })
+    request('op/article/add',params, 'POST')
+      .then(data=>{
+        if(data.data.code >= 0) {
+          this.setState({loading:false});
+          location.href = '#/ActiveList'
+        } else {
+          alert(data.data.msg);
+        }
+      })
   }
 
   remove = (k) => {
@@ -222,7 +225,7 @@ class ActiveNewCreateComponent extends React.Component {
     }
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form style={{ width:950, margin:'0 auto' }} onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
           label="开始时间"
