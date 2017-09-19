@@ -10,8 +10,6 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const { TextArea } = Input;
 
-const leaderData = [{id:1, name:'佟硕'},{id:2, name:'张三'},{id:3, name:'李四'},{id:4, name:'王二麻子'}];
-
 
 
 class ActiveNewCreateComponent extends React.Component {
@@ -28,13 +26,15 @@ class ActiveNewCreateComponent extends React.Component {
 
   };
   componentDidMount () {
-    this.setState({
-      leaderArr:leaderData
-    })
     let id = parseInt(getParams('id'));
     if(id) {
       this.getDetailData(id);
     }
+
+    request('op/leader/group',{},'GET')
+      .then(data=>{
+        this.setState({leaderArr:data.data})
+      })
   }
   getDetailData = (id) => {
     request('op/article/data',{id},'GET')
@@ -54,6 +54,8 @@ class ActiveNewCreateComponent extends React.Component {
             fileList,
             routingArr
           })
+        } else {
+          alert(data.data.msg);
         }
       })
   }
@@ -105,7 +107,11 @@ class ActiveNewCreateComponent extends React.Component {
     });
     console.log(this.state.fileList);
     console.log(params);
-    request('op/article/add',params, 'POST')
+    let url = 'op/article/add';
+    if(getParams('id')) {
+      url = 'op/article/edit';
+    }
+    request(url,params, 'POST')
       .then(data=>{
         if(data.data.code >= 0) {
           this.setState({loading:false});

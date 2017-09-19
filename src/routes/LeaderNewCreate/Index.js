@@ -2,7 +2,9 @@ import React from 'react';
 
 
 import { Form, Input, Icon, Select, Row, Col, Button, DatePicker, Upload, Radio } from 'antd';
+import getParams from '../../utils/getParams';
 import './Index.css';
+import request from "../../utils/request";
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 const { TextArea } = Input;
@@ -14,10 +16,31 @@ class RegistrationForm extends React.Component {
     leaderArr:[],
     fileListHeader:[],
     loading:false,
-
+    id:'',
+    leader:{},
+    gender:'',
   };
-  componentWillMount () {
+  componentDidMount () {
+    let id = getParams('id');
+    if(id) {
+      this.setState({id});
+      this.getData(id);
+    }
+  }
 
+  getData = (id) => {
+    request('op/leader/data',{id},'GET')
+      .then(data=>{
+        if(data.data.code >= 0) {
+          this.setState({
+            leader:data.data.leader,
+            gender:data.data.leader.gender,
+            fileListHeader:[{uid:1, url:data.data.leader.pic_url, thumbUrl:data.data.leader.pic_url}]
+          })
+        } else {
+          alert(data.data.msg);
+        }
+      })
   }
 
 
@@ -100,6 +123,7 @@ class RegistrationForm extends React.Component {
               rules: [{
                 required: true, message: '请输入姓名!',
               }],
+              initialValue:this.state.leader.name || ''
             })(
               <Input />
             )}
@@ -109,14 +133,15 @@ class RegistrationForm extends React.Component {
             label="性别"
             style={{ width:200 }}
           >
-            {getFieldDecorator('sex', {
+            {getFieldDecorator('gender', {
               rules: [{
                 required: true, message: '请选择性别!',
               }],
+              initialValue:this.state.gender.toString() || null
             })(
               <RadioGroup>
-                <Radio value='man'><Icon type="man" /></Radio>
-                <Radio value='woman'><Icon type="woman" /></Radio>
+                <Radio value='1'><Icon type="man" /></Radio>
+                <Radio value='2'><Icon type="woman" /></Radio>
               </RadioGroup>
             )}
           </FormItem>
@@ -129,10 +154,11 @@ class RegistrationForm extends React.Component {
             hasFeedback
             style={{ width:200 }}
           >
-            {getFieldDecorator('tel', {
+            {getFieldDecorator('mobile', {
               rules: [{
                 required: true, message: '请输入电话号码!',
               }],
+              initialValue:this.state.leader.mobile || ''
             })(
               <Input />
             )}
@@ -143,10 +169,11 @@ class RegistrationForm extends React.Component {
             hasFeedback
             style={{ width:200 }}
           >
-            {getFieldDecorator('weChat', {
+            {getFieldDecorator('weixin', {
               rules: [{
                 required: true, message: '请输入微信号!',
               }],
+              initialValue:this.state.leader.weixin || ''
             })(
               <Input />
             )}
@@ -160,10 +187,11 @@ class RegistrationForm extends React.Component {
             hasFeedback
             style={{ width:400 }}
           >
-            {getFieldDecorator('special', {
+            {getFieldDecorator('skill', {
               rules: [{
                 required: true, message: '请输入个人特长!',
               }],
+              initialValue:this.state.leader.skill || ''
             })(
               <TextArea style={{ width:333 }} placeholder="20字左右概括(分配路线会考虑到特长，请如实填写！)" rows={4} />
             )}
@@ -177,10 +205,11 @@ class RegistrationForm extends React.Component {
             hasFeedback
             style={{ width:400 }}
           >
-            {getFieldDecorator('leader_introduce', {
+            {getFieldDecorator('introduction', {
               rules: [{
                 required: true, message: '请输入个人简介!',
               }],
+              initialValue:this.state.leader.introduction || ''
             })(
               <TextArea style={{ width:333 }} placeholder="20字左右概括，展示出你的能力和旅行经历！" rows={4} />
             )}

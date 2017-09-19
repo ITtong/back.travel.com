@@ -16,11 +16,18 @@ export default class ListView extends React.Component {
       params:{},
       page:1,
       loading:false,
+      leaderArr:[],
 
 		}
 	}
 	componentWillMount () {
 	  this.getData({page:1, page_size:20});
+  }
+  componentDidMount () {
+	  request('op/leader/group',{},'GET')
+      .then(data=>{
+        this.setState({ leaderArr:data.data })
+      })
   }
 
 	getData = (params={}) => {
@@ -33,6 +40,8 @@ export default class ListView extends React.Component {
             count:data.data.count,
             loading:false
           })
+        } else {
+          alert(data.data.msg);
         }
       })
   }
@@ -129,7 +138,14 @@ export default class ListView extends React.Component {
       },{
         label:'领队',
         params:'leader_name',
-        type:<Input placeholder="领队查询" />
+        type:<Select showSearch filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} >
+          <Option key={0} value="0" >全部</Option>
+          {
+            this.state.leaderArr.length !== 0 ? this.state.leaderArr.map((item,index)=>{
+              return <Option key={index+1} value={item.id.toString()} >{item.name}</Option>
+            }) : null
+          }
+        </Select>
       },{
         label:'开始时间',
         params:'start_date',
