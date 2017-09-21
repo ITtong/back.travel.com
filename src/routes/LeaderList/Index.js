@@ -36,6 +36,7 @@ export default class ListView extends React.Component {
           })
         } else {
           alert(data.data.msg);
+          this.setState({loading:false,})
         }
       })
   }

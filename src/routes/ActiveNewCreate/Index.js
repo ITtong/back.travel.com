@@ -83,9 +83,10 @@ class ActiveNewCreateComponent extends React.Component {
         }
         let pics = this.state.fileList.map((item,index)=> {
           return {
-            pic_url:item.pic_url
+            pic_url:item.url
           }
         })
+
 
         params = {
           start_time:values.start_time.format('YYYY-MM-DD'),
@@ -105,8 +106,7 @@ class ActiveNewCreateComponent extends React.Component {
         }
       }
     });
-    console.log(this.state.fileList);
-    console.log(params);
+
     let url = 'op/article/add';
     if(getParams('id')) {
       url = 'op/article/edit';
@@ -118,6 +118,7 @@ class ActiveNewCreateComponent extends React.Component {
           location.href = '#/ActiveList'
         } else {
           alert(data.data.msg);
+          this.setState({loading:false});
         }
       })
   }
