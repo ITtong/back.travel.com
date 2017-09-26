@@ -5,6 +5,7 @@ import ActiveList from './routes/ActiveList/Index';
 import ActiveNewCreate from './routes/ActiveNewCreate/Index';
 import LeaderList from './routes/LeaderList/Index';
 import LeaderNewCreate from './routes/LeaderNewCreate/Index';
+import ApplicantList from './routes/ApplicantList/Index';
 
 function RouterConfig({ history }) {
   return (
@@ -14,6 +15,7 @@ function RouterConfig({ history }) {
         <Route path='ActiveNewCreate' component={ActiveNewCreate} />
         <Route path='LeaderList' component={LeaderList} />
         <Route path='LeaderNewCreate' component={LeaderNewCreate} />
+        <Route path='ApplicantList' component={ApplicantList} />
       </Route>
     </Router>
   );

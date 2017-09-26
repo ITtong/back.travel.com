@@ -122,6 +122,7 @@ export default class ListView extends React.Component {
 					return (
 						<div>
 							<a target="_blank" href={`#/ActiveNewCreate?id=${record.id}`} >查看详情</a>
+              <a style={{ marginLeft:15 }} target="_blank" href={`#/ApplicantList?id=${record.id}`}>已报名人员</a>
 						</div>
 					)
 				}
