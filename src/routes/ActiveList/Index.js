@@ -1,9 +1,10 @@
 import React from 'react';
-import { Table, Input, DatePicker, Select, Button, Tag, Pagination } from 'antd';
+import { Table, Input, DatePicker, Select, Button, Tag, Pagination, Modal } from 'antd';
 import SearchBar from '../../components/SearchBar/Index';
 import request from '../../utils/request';
 
 const Option = Select.Option;
+const confirm = Modal.confirm;
 
 
 
@@ -74,6 +75,7 @@ export default class ListView extends React.Component {
 
 
 	render () {
+	  var _this = this;
 		const columns = [
 			{
 				title:'ID',
@@ -102,7 +104,7 @@ export default class ListView extends React.Component {
 				title:'人数上限',
 				dataIndex:'most_num'
 			},{
-				title:'状态',//  活动成型/火热报名中/已结束/
+				title:'活动状态',//  活动成型/火热报名中/已结束/
 				dataIndex:'join_status',
         render: (text, record) => {
           if(record.join_status === 1) {
@@ -116,13 +118,46 @@ export default class ListView extends React.Component {
           }
         }
 			},{
+		    title:'显示状态',
+        dataIndex:'status',
+        render: (text, record, index) => {
+		      switch (record.status) {
+            case 1:
+              return <Tag color='#52C41A' >上线</Tag>;
+            case 2:
+              return <Tag color="#FADB14">待审核</Tag>;
+            case 3:
+              return <Tag color="#F5222D">下线</Tag>;
+          }
+        }
+      },{
 				title:'操作',
 				dataIndex:'',
 				render (text,record) {
+          const onOrDownLine = (status, content) => {
+            confirm({
+              title: <div>确定要将此活动 {content} 吗?</div>,
+              content: '',
+              onOk() {
+                return request('op/article/changeStatus',{id:record.id, status:status},'GET')
+                  .then(data=>{
+                    if(data.data.code >= 0) {
+                      let options = _this.state.params;
+                      _this.getData({...options, page:_this.state.page })
+                    }
+                  })
+              },
+              onCancel() {},
+            })
+          }
+
 					return (
 						<div>
 							<a target="_blank" href={`#/ActiveNewCreate?id=${record.id}`} >查看详情</a>
               <a style={{ marginLeft:15 }} target="_blank" href={`#/ApplicantList?id=${record.id}`}>已报名人员</a>
+              {
+                record.status === 1 ? <a style={{ marginLeft:15 }} onClick={onOrDownLine.bind(this, 3, <span style={{color:'#F5222D'}}>下线</span>)}>下线</a> : record.status === 2 ? <a style={{ marginLeft:15 }} onClick={onOrDownLine.bind(this, 1, <span style={{color:'#F5222D'}}>上线</span>)} >上线</a> : <a style={{ marginLeft:15 }} onClick={onOrDownLine.bind(this, 1, <span style={{color:'#F5222D'}}>上线</span>)} >上线</a>
+              }
 						</div>
 					)
 				}
