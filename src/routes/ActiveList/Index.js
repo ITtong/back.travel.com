@@ -133,6 +133,7 @@ export default class ListView extends React.Component {
       },{
 				title:'操作',
 				dataIndex:'',
+        width:190,
 				render (text,record) {
           const onOrDownLine = (status, content) => {
             confirm({
