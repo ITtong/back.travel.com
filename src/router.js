@@ -6,6 +6,7 @@ import ActiveNewCreate from './routes/ActiveNewCreate/Index';
 import LeaderList from './routes/LeaderList/Index';
 import LeaderNewCreate from './routes/LeaderNewCreate/Index';
 import ApplicantList from './routes/ApplicantList/Index';
+import ShoppingMsgList from './routes/ShoppingMsgList/Index'; //李碧玉
 
 function RouterConfig({ history }) {
   return (
@@ -16,6 +17,7 @@ function RouterConfig({ history }) {
         <Route path='LeaderList' component={LeaderList} />
         <Route path='LeaderNewCreate' component={LeaderNewCreate} />
         <Route path='ApplicantList' component={ApplicantList} />
+        <Route path='ShoppingMsgList' component={ShoppingMsgList} />
       </Route>
     </Router>
   );

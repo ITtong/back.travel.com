@@ -36,6 +36,10 @@ export default class ManLayout extends React.Component {
                 <Icon style={{ float:'left' }} type="user-add" />
                 <a style={{ color:'#fff', float:'left' }} href="#/LeaderNewCreate">成为领队</a>
               </Menu.Item>
+	      <Menu.Item key="4">
+                <Icon style={{ float:'left' }} type="user-add" />
+                <a style={{ color:'#fff', float:'left' }} href="#/ShoppingMsgList">购物店列表</a>
+              </Menu.Item>
             </Menu>
           </Sider>
         <Layout>
